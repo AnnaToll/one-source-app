@@ -1,0 +1,60 @@
+{
+  "name": "fe-one-source-v2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "jest": "^27.5.1",
+    "jwt-decode": "^3.1.2",
+    "react": "^18.2.0",
+    "react-chatbot-kit": "^2.1.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-simple-chatbot": "^0.6.1",
+    "socket.io-client": "^4.5.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "jest",
+    "componenttest": "jest",
+    "integrationtest": "jest",
+    "browsertest": "cypress run",
+    "prepare": "husky install",
+    "lint": "eslint ./",
+    "cypress:open": "cypress open"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "script": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "cypress": "^10.8.0",
+    "eslint": "^8.23.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "install": "^0.13.0",
+    "npm": "^8.19.2"
+  }
+}

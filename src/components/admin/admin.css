@@ -1,0 +1,84 @@
+.admin-container {
+    position: fixed;
+    top: 120px;
+    display: flex;
+    height: calc(100vh - 150px);
+    width: 90vw;
+    background-color: white;
+    z-index: 90;
+    margin: 0 5vw;
+    padding: 50px 45px;
+    overflow-y: auto;
+    
+}
+
+aside {
+    width: 150px;
+    border-right: 1px solid black;
+}
+
+aside p {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.admin-container > section {
+    padding-left: 50px;
+    flex-grow: 1;
+}
+
+
+.admin-content-container {
+    margin-top: 30px;
+    max-width: 700px;
+}
+
+.admin-container > section h2 {
+    font-size: 29px;
+}
+
+.admin-container h3 {
+    margin-bottom: 18px;
+}
+
+.admin-container h5 {
+    margin-bottom: 10px;
+}
+
+.admin-content-container > section {
+    display: flex;
+    column-gap: 30px;
+}
+
+.admin-content-container > section > div {
+    flex-grow: 1;
+}
+
+.admin-content-container > section input {
+    width: 100%;
+}
+
+.admin-container .bi-x {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.admin-container hr {
+    margin-top: 50px;
+}
+
+.admin-container input {
+    margin-bottom: 10px;
+}
+
+.admin-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.admin-container .is-active {
+    font-weight: 600;
+}

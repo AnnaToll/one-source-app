@@ -1,0 +1,193 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+@font-face {
+  font-family: 'Graphik Light';
+  src: url('./fonts/GraphikLight.eot');
+  src: url('./fonts/GraphikLight.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/GraphikLight.woff2') format('woff2'),
+    url('./fonts/GraphikLight.woff') format('woff'),
+    url('./fonts/GraphikLight.svg#Graphik Light') format('svg');
+}
+
+@font-face {
+  font-family: 'Graphik Regular';
+  src: url('./fonts/GraphikRegular.eot');
+  src: url('./fonts/GraphikRegular.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/GraphikRegular.woff2') format('woff2'),
+    url('./fonts/GraphikRegular.woff') format('woff'),
+    url('./fonts/GraphikRegular.svg#Graphik Regular') format('svg');
+}
+
+@font-face {
+  font-family: 'Graphik Medium';
+  src: url('./fonts/GraphikMedium.eot');
+  src: url('./fonts/GraphikMedium.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/GraphikMedium.woff2') format('woff2'),
+    url('./fonts/GraphikMedium.woff') format('woff'),
+    url('./fonts/GraphikMedium.svg#Graphik Medium') format('svg');
+}
+
+@font-face {
+  font-family: 'Graphik Semibold';
+  src: url('fonts/GraphikSemibold.eot');
+  src: url('fonts/GraphikSemibold.eot?#iefix') format('embedded-opentype'),
+    url('fonts/GraphikSemibold.woff2') format('woff2'),
+    url('fonts/GraphikSemibold.woff') format('woff'),
+    url('fonts/GraphikSemibold.svg#Graphik Semibold') format('svg');
+}
+
+@font-face {
+  font-family: 'Graphik Bold';
+  src: url('fonts/GraphikBold.eot');
+  src: url('fonts/GraphikBold.eot?#iefix') format('embedded-opentype'),
+    url('fonts/GraphikBold.woff2') format('woff2'),
+    url('fonts/GraphikBold.woff') format('woff'),
+    url('fonts/GraphikBold.svg#Graphik Bold') format('svg');
+}
+
+@font-face {
+  font-family: 'Graphik Black';
+  src: url('fonts/GraphikBlack.eot');
+  src: url('fonts/GraphikBlack.eot?#iefix') format('embedded-opentype'),
+    url('fonts/GraphikBlack.woff2') format('woff2'),
+    url('fonts/GraphikBlack.woff') format('woff'),
+    url('fonts/GraphikBlack.svg#Graphik Black') format('svg');
+}
+
+/* Color Palette */
+/* ex) background-color: var(--white) */
+:root {
+  /*Cerulean Blue*/
+  --blue: #3A51B7;
+  /*Burnt Sienna*/
+  --sienna: #EE6C4D;
+  /*Middle red*/
+  --red: #F38D68;
+  /*Persian Green*/
+  --green: #17A398;
+  /*Jet*/
+  --jet: #33312E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Page style*/
+
+.Page-wrapper {
+  align-items: center;
+  justify-content: center;
+}
+
+.Page-About {
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+.Page-TheTeam {
+  position: relative;
+  background-color: lightblue;
+  height: auto;
+  width: 100%;
+}
+
+.Page-Footer {
+  position: relative;
+  background-color: black;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: auto;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13.7px;
+  padding: 0.6em 1.05em;
+  border-radius: 0.3em;
+  background-color: var(--sienna);
+  cursor: pointer;
+  margin-top: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.orange {
+  color: var(--sienna);
+}
+
+.red {
+  color: var(--red);
+}
+
+.green {
+  color: var(--green);
+}
+
+.gray {
+  color: rgb(96, 94, 94);
+}
+
+.bg-orange {
+  background-color: var(--sienna);
+  color: white;
+}
+
+.bg-red {
+  background-color: var(--red);
+  color: white;
+}
+
+.bg-green {
+  background-color: var(--green);
+  color: white;
+}
+
+.bg-grey {
+  background-color: rgb(218, 218, 218);
+}
+
+.pad-s {
+  padding: 0.4em 0.85em;
+}
+
+.top-s {
+  margin-top: 10px;
+}
+
+.top-m {
+  margin-top: 20px;
+}
+
+input::-webkit-input-placeholder {
+  color: rgb(202, 197, 197);
+  font-style: italic;
+  margin-left: 20px;
+}
+
+input::-moz-placeholder {
+  color: rgb(202, 197, 197);
+  font-style: italic;
+  margin-left: 20px;
+}
+
+textarea::-webkit-input-placeholder {
+  color: rgb(202, 197, 197);
+  font-style: italic;
+  margin-left: 20px;
+}
+
+textarea::-moz-placeholder {
+  color: rgb(202, 197, 197);
+  font-style: italic;
+  margin-left: 20px;
+}

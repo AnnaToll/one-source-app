@@ -1,0 +1,168 @@
+:root {
+    --bubble-color: white;
+    --bubble-two-color: rgb(224, 130, 96);
+    --text-background: white;
+    --text-color: rgb(78, 78, 78);
+    --bubble-height: 70px;
+    --bubble-width: calc(var(--bubble-height) * 1.17);
+    --headphones-color: rgba(0, 0, 0, 0.8);
+    --headphones-width: calc(var(--bubble-height) * 0.054);
+    --sienna: #EE6C4D;
+    /* rgba(238, 108, 77, 0.5) */
+    --red: #F38D68;
+    /* rgba(243, 141, 104, 0.5) */
+    --green: #17A398;
+    /* rgba(23, 163, 152, 0.5) */
+    --jet: #33312E;
+    /* rgba(51, 49, 46, 0.5) */
+  }
+
+.App {
+    position: relative;
+    z-index: 80;
+}
+
+.Chat-Button {
+    position: fixed;
+    bottom: 67px;
+    right: 81px;
+    z-index: 80;
+    color: white;
+    cursor: pointer;
+}
+
+.Icon-close {
+    position: absolute;
+    top: -14px;
+    right: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    font-size: 25px;
+    color: gray;
+    background: white;
+    z-index: 85;
+}
+
+.Icon-chat .bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--bubble-height) * 0.38);
+    height: var(--bubble-height);
+    width: var(--bubble-width);
+    border-radius: 50%;
+    color: rgb(195, 107, 78);
+    background-color: var(--bubble-color);
+    white-space: nowrap;
+    box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Icon-chat .bubble-green {
+    position: absolute;
+    top: calc(var(--bubble-height) * 0.04);
+    right: calc(var(--bubble-height) * -0.08);
+    height: calc(var(--bubble-height) * 0.97);
+    width: calc(var(--bubble-width) * 0.97);
+    border-radius: 50%;
+    box-shadow: 30px 10px 0 var(--bubble-two-color);
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+    transform: rotate(-2deg);
+}
+
+.Icon-chat p {
+    /* font-family: 'Graphik Regular', sans-serif; */
+    font-weight: 500;
+    position: absolute;
+    color: var(--text-color);
+    top: calc(var(--bubble-height) * 1.38);
+    top: calc(var(--bubble-height) * 1.05);
+    right: calc(var(--bubble-height) * 0.98);
+    font-size: 14px;
+    background-color: var(--text-background);
+    padding: 0.55em 0.9em;
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+/* .Icon-chat p {
+    position: absolute;
+    color: white;
+    top: calc(var(--bubble-height) * 0.63);
+    right: calc(var(--bubble-height) * 0.92);
+    font-size: 15.5px;
+    background-color: var(--green);
+    padding: 0.65em 0.95em;
+} */
+
+.Icon-chat p .bi-emoji-smile {
+    color: var(--green);
+}
+
+.Icon-chat .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(243, 242, 242);
+    width: calc(var(--bubble-height) - 18%);
+    height: calc(var(--bubble-height) - 18%);
+    border-radius: 50%;
+}
+
+.Icon-chat .bubble img {
+    position: relative;
+    bottom: 3%;
+    width: 60%;
+}
+
+.Icon-chat .arrow {
+    position: absolute;
+    top: calc(var(--bubble-height) * 0.9);
+    right: calc(var(--bubble-width) * 0.43);
+    height: 0;
+    width: 0;
+    border-top: calc(var(--bubble-height) * 0.25) solid var(--bubble-color);
+    border-left: calc(var(--bubble-height) * 0.08) solid transparent;
+    border-right: calc(var(--bubble-height) * 0.25) solid transparent;
+    transform: rotate(20deg);
+}
+
+.Icon-chat .arrow-green {
+    position: absolute;
+    top: calc(var(--bubble-height) * 0.99);
+    right: calc(var(--bubble-width) * -0.2);
+    height: 0;
+    width: 0;
+    border-top: calc(var(--bubble-height) * 0.25) solid var(--bubble-two-color);
+    border-right: calc(var(--bubble-height) * 0.08) solid transparent;
+    border-left: calc(var(--bubble-height) * 0.25) solid transparent;
+    transform: rotate(-30deg);
+}
+/* .Icon-chat .arrow-green {
+    position: absolute;
+    top: calc(var(--bubble-height) * 0.8);
+    right: calc(var(--bubble-width) * 0.16);
+    height: 0;
+    width: 0;
+    border-top: calc(var(--bubble-height) * 0.25) solid var(--bubble-two-color);
+    border-right: calc(var(--bubble-height) * 0.08) solid transparent;
+    border-left: calc(var(--bubble-height) * 0.25) solid transparent;
+    transform: rotate(-30deg);
+} */
+/* .Icon-chat {
+    font-size: 50px;
+    height: 62px;
+    width: 62px;
+    border-radius: 30px;
+    color: #fff;
+    background-color:  hsla(175, 86%, 36%, 0.7);
+} */
+
+.Chatbot {
+    background-color: #17a398;
+}
+
