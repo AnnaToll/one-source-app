@@ -20,9 +20,7 @@ function DiscordService( ) {
             'https://discord.com/api/webhooks/1023874528612458507/ON9d0mPOjEh2rHZTtNxMy7J-3OMb0hO6riTBAjLzs8oPO3bFGorbalWWcv3lYsnTWA-R',
             body
         );
-        console.log(data);
        } catch (error) {
-        console.error(error);
        }
     };
     return{

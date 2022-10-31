@@ -33,8 +33,6 @@ const Admin = ({ navPages }) => {
         setLoggedIn(false);
     };
 
-    console.log('in admin');
-
     useEffect(() => {
         navigate(`/admin/${nav[0]}`);
     }, []);

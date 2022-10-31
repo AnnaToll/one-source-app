@@ -4,7 +4,7 @@ import { useAuthorized } from './useAuthorized';
 
 export function useJWT() {
 
-    const [ loggedIn, setLoggedIn ] = useAuthorized(); 
+    const [ , setLoggedIn ] = useAuthorized(); 
 
     const getNewToken = async () => {
         const response = await fetch(`${process.env.REACT_APP_API_ADDRESS}/api/v0/refresh`, { credentials: 'include' });
@@ -47,9 +47,6 @@ export function useJWT() {
           checkExpirationTimeout();
         }, 60 * 60 * 1000);
       });
-
-      console.log(loggedIn);
-
       
       return [ checkExpiration, checkExpirationTimeout ];
     

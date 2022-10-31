@@ -54,7 +54,6 @@ const AdminSupp = ({ socket }) => {
                 setError('');
             }
         } catch (error) {
-            console.log(error);
             setError('Oops, something went wrong! Please try again or contact us for more information.');
         }
     };
