@@ -1,5 +1,3 @@
-// Testing Jest
-
 const testFunction = (a, b) => a * b;
 
 test('Multiplies two arguments', () => {

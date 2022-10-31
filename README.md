@@ -43,17 +43,8 @@ Packages & Frameworks
 - Nodemon  
 - Cors
 - Jest
-- Supertest
-- Cypress
 - dotenv
 - Mongoose
-- Mockingoose
-- Husky
-- Lint
-- Json Webtoken
-- Swagger
-- socket.io
-
 ```
 # API documentation
 To access the API documentation, run backend in the environment of your choice, and navigate to (your-backend-environment.com)/api-docs.
@@ -97,7 +88,6 @@ heroku git:remote -a <project-name> # Add connection to a Heroku server
 git remote rm heroku # Removes the current connection to Heroku
 git remote add origin <remote-url> # Add connection to a Github repo
 git remote rm <remote-url> # Remove connection to a Github repo
-npx eslint . --fix # Fixes all errors that EsLint can handle
 ```
 # JWT - Instructions
 ```mermaid

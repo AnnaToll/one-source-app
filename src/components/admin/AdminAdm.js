@@ -1,13 +1,15 @@
 import { Navigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
+import { useJWT } from '../../hooks/useJWT';
 
-const AdminAdm = ({ checkExpiration, getNewToken }) => { 
+const AdminAdm = () => { 
 
     const [addAccessDetails, setAddAccessDetails] = useState({});
     const [removeAccessDetails, setRemoveAccessDetails] = useState({});
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [ checkExpiration ] = useJWT();
 
     const handleClickDeleteCookies = async () => {
         await fetch(`${process.env.REACT_APP_API_ADDRESS}/api/v0/admin/delete-cookies`, { credentials: 'include' });
@@ -15,7 +17,13 @@ const AdminAdm = ({ checkExpiration, getNewToken }) => {
 
     const handleClickAccess = async (e, details, type) => {
         e.preventDefault();
-        await checkExpiration();
+        const accessLevel = details.accessLevel;
+        if (accessLevel !== 'admin' && accessLevel !== 'developer' && accessLevel !== 'support') {
+            setError('Not valid access type');
+            return;
+        }
+        setError('');
+        checkExpiration();
         const settings = {
             method: 'PATCH',
             credentials: 'include',

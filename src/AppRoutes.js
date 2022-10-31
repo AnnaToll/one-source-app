@@ -1,79 +1,31 @@
-import React from 'react';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-
 import App from './App';
 import Header from './components/Header';
-import Home from './components/Home';
-import LoginContainer from './components/LoginContainer';
-import AdminRoutes from './components/AdminRoutes';
-import Admin from './components/Admin';
-import Footer from './components/Footer';
-import Test from './components/Test';
+import LoginContainer from './components/auth/LoginContainer';
+import AdminRoutes from './components/admin/AdminRoutes';
+import Admin from './components/admin/Admin';
+import { useAuthorized } from './hooks/useAuthorized';
+import { useJWT } from './hooks/useJWT';
+import Intro from './components/Intro';
 
 function AppRoutes() {
 
-  const [toggleHide, setToggleHide] = useState('hidden');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [ loggedIn ] = useAuthorized();
+  const [ checkExpiration, checkExpirationTimeout ] = useJWT();
   const navPages = useRef([]);
 
-  const handleClick = () => {
-    toggleHide === 'hidden' ? setToggleHide('flex') : setToggleHide('hidden');
-  };
-
-  const getNewToken = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_ADDRESS}/api/v0/refresh`, { credentials: 'include' });
-    const data = await response.json();
-    if (sessionStorage.getItem('accessToken')) {
-      sessionStorage.removeItem('accessToken');
-    }
-    if (response.status === 200) {
-      sessionStorage.setItem('accessToken', data.accessToken);
-      setLoggedIn(true);
-    } else {
-      if (localStorage.getItem('expiration')) {
-        localStorage.removeItem('expiration');
-      }
-      setLoggedIn(false);
-    }
-  };
-
-  const checkExpiration = async () => {
-    if (localStorage.getItem('expiration')) {
-      const now = Date.now();
-      if (now < localStorage.getItem('expiration')) {
-        if (sessionStorage.getItem('accessToken')) {
-          const token = jwt_decode(sessionStorage.getItem('accessToken'));
-          if (now < token.exp * 1000) {
-            setLoggedIn(true);
-          } else {
-            await getNewToken();
-          }
-        } else {
-          await getNewToken();
-        }
-      }
-    }
-  };
-
-
-  const checkExpirationTimeout = useCallback(() => {
-    setTimeout(() => {
-      checkExpiration();
-      checkExpirationTimeout();
-    }, 60 * 60 * 1000);
-  });
-
-
+  
   useEffect(() => {
-
+   
     checkExpiration();
-
+  
   }, []);
 
+
   useEffect(() => {
+
     if (loggedIn === true) {
       checkExpirationTimeout();
     } else {
@@ -86,27 +38,21 @@ function AppRoutes() {
 
   }, [loggedIn]);
 
+
   return (
-    <Router>
-
-      <LoginContainer toggleHide={toggleHide} setToggleHide={setToggleHide} handleClick={handleClick} setLoggedIn={setLoggedIn} />
-      <Header handleClick={handleClick} loggedIn={loggedIn} setLoggedIn={setLoggedIn} navPages={navPages} />
-      <div ref={el => navPages.current[0] = el} className="Page-Home"><Home /></div>
-
-      <Routes>
-        <Route path='/' element={<App navPages={navPages} />} />
-        <Route element={<AdminRoutes loggedIn={loggedIn} />}>
-          <Route
-            path='/admin/*'
-            element={<Admin setLoggedIn={setLoggedIn}
-              navPages={navPages} />}
-          />
-        </Route>
-      </Routes>
-
-      {/* <div className="Page-Footer"><Footer /></div> */}
-
-    </Router>
+      <Router>
+        
+        <Intro />
+        <LoginContainer />
+        <Header navPages={navPages} />
+          <Routes>
+            <Route path='/' element={<App navPages={navPages} />} />
+            <Route element={<AdminRoutes />}>
+                <Route path='/admin/*' element={ <Admin navPages={ navPages } />} />
+            </Route>          
+          </Routes>
+        
+      </Router>
   );
 }
 

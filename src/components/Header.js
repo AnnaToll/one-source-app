@@ -2,9 +2,15 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './components.css';
 import jwt_decode from 'jwt-decode';
+import { useAuthorized } from '../hooks/useAuthorized';
+import { useLoginDisplay } from '../hooks/useLoginDisplay';
+import useIntro from '../hooks/useIntro';
 
-function Header({ handleClick, loggedIn, setLoggedIn, navPages }) {
+function Header({  navPages }) {
 
+  const [ loggedIn ] = useAuthorized();
+  const [, toggleLoginDisplay ] = useLoginDisplay();
+  const { showIntro } = useIntro();
   const navigate = useNavigate();
   const location = useLocation();
   const [headerClass, setHeaderClass] = useState('');
@@ -90,35 +96,42 @@ function Header({ handleClick, loggedIn, setLoggedIn, navPages }) {
   
   return (
     <header className={headerClass}>
-      <img className="logo" src={require('../img/logo.png')} />
+      <div id='logo'>
+        <div id='logo-one'>1</div>
+        <div id='logo-source'>source</div>
+      </div>
       <section className='logo-horizontal'>
         <span>1 </span>
         <span>SOURCE</span>
       </section>
       <nav>
-        <span onClick={() => handleNavClick(0)} className={ linkClass[0] } >Home</span>
-        <span onClick={() => handleNavClick(1)} className={ linkClass[1] } >About</span>
-        <span onClick={() => handleNavClick(2)} className={ linkClass[2] } >The team</span>
-        <span onClick={() => handleNavClick(3)} className={ linkClass[3] } >Contact</span>
+        <span onClick={() => handleNavClick(0)} className={ linkClass[0] } >
+          Home
+        </span>
+        <span onClick={() => handleNavClick(1)} className={ linkClass[1] } >
+          About
+        </span>
+        <span onClick={() => handleNavClick(2)} className={ linkClass[2] } >
+          The team
+        </span>
+        <span onClick={() => handleNavClick(3)} className={ linkClass[3] } >
+          Contact
+        </span>
         {
           loggedIn
           ? 
             <>
-              {/* <span>{name} <i className="bi bi-caret-down-fill" /></span> */}
               <div className="login-icon-container" onClick={handleClickNavigate}>
-                {name}
-                {/* <i className="bi bi-lock-fill" /> */}
+                <span className='user-name'>{ name }</span>
                 <i className="bi bi-caret-down-fill" />
-                {/* <i className="bi bi-person-circle" /> */}
               </div>
             </>
-            // <div>Hi {name}!  |  <span onClick={handleClickLogout}>Logout</span></div>
           : 
-            <div className="login-icon-container" onClick={handleClick}>
+            <div className="login-icon-container" onClick={ toggleLoginDisplay }>
               <i className="bi bi-lock-fill" />
-              {/* <i className="bi bi-person-circle" /> */}
             </div>
           }
+          <i className='bi bi-info-circle' onClick={ showIntro }></i>
       </nav>
     </header>
   );

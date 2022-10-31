@@ -1,5 +1,5 @@
 .admin-container .chat-support {
-    border: 1px solid black;
+    padding: 40px 0;
 }
 
 .admin-container .messages-container {
@@ -19,10 +19,12 @@
 
 .admin-container .self {
     align-self: flex-end;
+    margin-top: 15px;
 }
 
 .admin-container .other {
     background-color: blanchedalmond;
+    margin-top: 15px;
 }
 
 .chat-support .chat-input-container form {
@@ -30,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 0;
     column-gap: 30px;
 }
 

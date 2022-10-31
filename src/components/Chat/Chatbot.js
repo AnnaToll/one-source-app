@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './chat.css';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import { ChatContext } from '../../reducer/chatReducer';
+import ACTIONS from '../../reducer/actions';
+
+
 
 //Styles
 const theme = {
@@ -18,8 +22,11 @@ const theme = {
 };
 
 class App extends Component {
-  render() {
-    const steps = [
+
+  static contextType = ChatContext;
+
+  state = {
+    steps: [
       {
         id: '0',
         message: 'Hello, what\'s your name?',
@@ -55,43 +62,84 @@ class App extends Component {
       },
       {
         id: 'school',
-        message: 'We are student at Jensen Education in Stockholm, Sweden and we are studying Frontend development',
+        message: 'We are students at Jensen Education in Stockholm, Sweden, and we are studying Frontend development',
         trigger: 4
       },
       {
         id: '4',
         message: 'Want more info?',
-        trigger: 5
+        trigger: this.context.chat.chatActive ? '5' : '6'
       },
       {
         id: '5',
         options: [
           { value: 1, label: 'Yes', trigger: '3' },
-          { value: 2, label: 'No', trigger: '6' },
-          { value: 3, label: 'Yes but with a human', trigger: '7' },
+          { value: 2, label: 'No', trigger: '7' },
+          { value: 3, label: 'Yes but with a human', trigger: '8' }
         ]
       },
       {
         id: '6',
+        options: [
+          { value: 1, label: 'Yes', trigger: '3' },
+          { value: 2, label: 'No', trigger: '7' },
+        ]
+      },
+      {
+        id: '7',
         message: 'Have a nice day!',
         end: true
       },
       {
-        id: '7',
+        id: '8',
         message: 'I will fetch a real human for you !',
         end: true,
       },
-    ];
+    ],
+  };
+  
+  componentDidMount() {
+    this.handleEnd = this.handleEnd.bind(this);
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.liveChatOnline !== this.props.liveChatOnline) {
+      const stepsCopy = JSON.parse(JSON.stringify(prevState.steps));
+      stepsCopy[7].trigger = this.props.liveChatOnline ? '5' : '6';
+      this.setState({ steps: stepsCopy });
+    }
+  }
+
+  handleEnd = ({ steps, values }) => {
+
+    if (values[values.length - 1] === 2) {
+      setTimeout(() => {
+        this.props.setShow(false);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.context.dispatch({
+          type: ACTIONS.ACTIVATE_SESSION,
+          payload: values[0]
+        });
+      }, 1000);
+    }
+  };
+
+  render() {
     return (
       <div className='App'>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={ theme }>
           <ChatBot
+            liveChatOnline={ this.liveChatOnline }
+            setShow={ this.props.setShow }
+            setCurrentComponent={ this.props.setCurrentComponen }
+            handleEnd={ this.handleEnd }
             headerTitle={'One Source Support'}
             placeholder={'Write here'}
             recognitionEnable={true}
             botDelay={1000}
-            steps={steps}
+            steps={this.state.steps}
           />
         </ThemeProvider>
       </div>
