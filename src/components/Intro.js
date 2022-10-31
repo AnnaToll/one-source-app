@@ -1,4 +1,5 @@
 import useIntro from '../hooks/useIntro';
+import style from './components.css';
 
 
 const Intro = () => {
@@ -6,7 +7,7 @@ const Intro = () => {
     const { hidden, handleClick } = useIntro();
 
     return (
-        <div className={`intro-fs ${hidden}`}>
+        <div className={ hidden ? 'hidden' : 'intro-fs'}>
             <div className='dark-fs' onClick={ handleClick } />
             <section className='intro-container'>
                 <h1>Welcome to my sandbox <i className='bi bi-emoji-smile'></i></h1>

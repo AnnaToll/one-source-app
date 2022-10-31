@@ -1,6 +1,6 @@
 
 import styles from './admin.css';
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 import App from '../../App';
 import AdminAdm from './AdminAdm';
@@ -32,6 +32,8 @@ const Admin = ({ navPages }) => {
         await fetch(`${process.env.REACT_APP_API_ADDRESS}/api/v0/logout`, { credentials: 'include' });
         setLoggedIn(false);
     };
+
+    console.log('in admin');
 
     useEffect(() => {
         navigate(`/admin/${nav[0]}`);

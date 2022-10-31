@@ -8,6 +8,8 @@ function LoginContainer() {
   const [loginDisplay, toggleLoginDisplay ] = useLoginDisplay();
   const [current, setCurrent] = useState('login');
 
+  console.log(loginDisplay);
+
   return (
     <div className={`${ loginDisplay } dark-fs`}>
       <div onClick={ toggleLoginDisplay } className="fs" />

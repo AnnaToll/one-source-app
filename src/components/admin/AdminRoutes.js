@@ -5,6 +5,7 @@ import { useAuthorized } from '../../hooks/useAuthorized';
 const AdminRoutes = () => {
 
   const [loggedIn] = useAuthorized(); 
+  console.log(loggedIn);
     
   return (
     loggedIn ? <Outlet /> : <Navigate to='/'/>

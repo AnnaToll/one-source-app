@@ -121,7 +121,7 @@ function Header({  navPages }) {
           loggedIn
           ? 
             <>
-              <div className="login-icon-container" onClick={handleClickNavigate}>
+              <div className="login-icon-container" onClick={ handleClickNavigate }>
                 <span className='user-name'>{ name }</span>
                 <i className="bi bi-caret-down-fill" />
               </div>

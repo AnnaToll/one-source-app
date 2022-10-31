@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 const IntroContext = React.createContext();
 
 export const IntroProvider = ({ children }) => {
-    const [ hidden, setHidden ] = useState('');
+    const [ hidden, setHidden ] = useState(false);
     return (
         <IntroContext.Provider value={[ hidden, setHidden ]}>
             { children }
@@ -15,11 +15,11 @@ const useIntro = () => {
     const [ hidden, setHidden ] = useContext(IntroContext);
 
     const handleClick = () => {
-        setHidden('hidden');
+        setHidden(true);
     };
 
     const showIntro = () => {
-        setHidden('');
+        setHidden(false);
     };
 
     return { hidden, handleClick, showIntro };
