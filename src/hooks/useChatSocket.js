@@ -85,6 +85,15 @@ const useChatSocket = (socket, setShow) => {
             setShow(false);
         });
 
+        return () => {
+            socket.off('queue-data');
+            socket.off('online-res');
+            socket.off('welcome-msg');
+            socket.off('message');
+            socket.off('typing');
+            socket.off('disconnect-user');
+        };
+
     }, []);
 
     const submitMessage = (message) => {

@@ -40,8 +40,7 @@ function AppRoutes() {
 
 
   return (
-      <Router>
-        
+      <Router>    
         <Intro />
         <LoginContainer />
         <Header navPages={navPages} />
@@ -51,7 +50,6 @@ function AppRoutes() {
                 <Route path='/admin/*' element={ <Admin navPages={ navPages } />} />
             </Route>          
           </Routes>
-        
       </Router>
   );
 }

@@ -28,6 +28,13 @@ function App({ navPages }) {
     }
   }, [hidden]);
 
+  useEffect(() => {
+    if(socketUser.connected) {
+      setSocketConnected(true);
+    }
+  }, []);
+
+
   return (
     <div className="App">
       { socketConnected && !introActive && <ChatContainer socket={ socketUser } /> }
