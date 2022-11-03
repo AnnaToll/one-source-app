@@ -11,7 +11,7 @@ const Intro = () => {
             <div className='dark-fs' onClick={ handleClick } />
             <section className='intro-container'>
                 <h1>Welcome to my sandbox <i className='bi bi-emoji-smile'></i></h1>
-                <h4>One Source started of as a group project, but since I have a tendancy to alway want to learn more, I continued to develop the app on my own. I found it to be an excellent opportunity to dig deeper in React, and learning more about other aspects of developing I was curious about.</h4>
+                <h4>One Source started of as a group project, but since I have a tendancy to always want to learn more, I continued to develop the app on my own. I found it to be an excellent opportunity to dig deeper in React, and learning more about other aspects of developing I was curious about.</h4>
                 <h4>The project is built with React, Node.js/Express, MongoDB and is hosted on Heroku.</h4>
                 <h3>My contributions are:</h3>
                 <ul>

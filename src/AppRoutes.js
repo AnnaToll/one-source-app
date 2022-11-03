@@ -20,6 +20,7 @@ function AppRoutes() {
   useEffect(() => {
    
     checkExpiration();
+    document.title = 'One Source';
   
   }, []);
 
